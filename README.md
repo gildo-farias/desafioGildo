@@ -9,9 +9,9 @@
 # Base de Dados PostgreSQL
   > Usuario sendo validado na base de dados com Spring Security.
   
- - Spring Security Acesso.
-   Username = **gil@15**
-   Password = **123**
+ - Spring Security Acesso:
+   - Username = **gil@15**
+   - Password = **123**
   ```
   INSERT INTO usuario(login, nome_completo, senha) VALUES ('gil@15','Gildo Farias','$2a$10$h/AryOozC6DSEkMvGtEO..ULp2S8TpgT.J7Yrq7A9Gh9WHPrsPBgG')
   ```
