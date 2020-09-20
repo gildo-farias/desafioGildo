@@ -15,7 +15,13 @@ public class Filme {
 	private String titulo;	
 	private String elenco;
 	private String sinopse;
-	
+		
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getTitulo() {
 		return titulo;
 	}

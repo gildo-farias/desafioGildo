@@ -7,32 +7,32 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.goat.desafioGildo.models.Filme;
-import com.goat.desafioGildo.services.FilmeService;
+import com.goat.desafioGildo.services.FilmesService;
 
 /** @author GILDO */
 
 @RestController
 @RequestMapping("/filmes")
-public class FilmeController implements Controller<Filme>{
+public class FilmesController implements Controller<Filme> {
 	
 	@Autowired
-	private FilmeService service;
-
-	@Override
-	public ResponseEntity<List<Filme>> listar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@GetMapping("/{busca}")	
+	private FilmesService filmesService;
+	
+	@GetMapping("/{busca}")
 	@Override
 	public ResponseEntity<Filme> buscar(String busca) {
-		Filme filme = this.service.buscarFavorito(busca);		
-//		if(filme.getTitulo().length() > 0) 			
+		Filme filme = this.filmesService.buscarFilme(busca);
 		return ResponseEntity.ok(filme);
-		
 	}
+
+	@GetMapping("")
+	@Override
+	public ResponseEntity<List<Filme>> listar() {
+		List<Filme> filmesRecentes = filmesService.BuscasRecentes();
+		return ResponseEntity.ok(filmesRecentes);
+	}	
 
 	@Override
 	public ResponseEntity<Filme> salvar(Filme object) {
@@ -51,6 +51,5 @@ public class FilmeController implements Controller<Filme>{
 		// TODO Auto-generated method stub
 		
 	}
-	
 
 }
