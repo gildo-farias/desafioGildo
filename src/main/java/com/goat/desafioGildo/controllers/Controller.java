@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface Controller<T> {
 		
-	public ResponseEntity<List<T>> listar();
+	public ResponseEntity<List<T>> listar(@PathVariable(name = "username") String username);
 	
-	public ResponseEntity<T> buscar(@PathVariable(name = "busca") String busca);
+	public ResponseEntity<T> buscar(@PathVariable(name = "busca") String busca, @PathVariable(name = "username") String username);
 	
-	public ResponseEntity<T> salvar(@RequestBody T object);
-	
-	public ResponseEntity<T> alterar(@RequestBody T object);	
+	public ResponseEntity<T> salvar(@RequestBody T object, @PathVariable(name = "username") String username);
 	
 	public void deletar(@PathVariable(name = "id") Long id);
 		

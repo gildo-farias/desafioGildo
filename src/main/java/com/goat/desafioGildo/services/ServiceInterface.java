@@ -1,9 +1,6 @@
 package com.goat.desafioGildo.services;
 
 import java.util.List;
-
-import com.goat.desafioGildo.models.Filme;
-
 /** @author GILDO */
 
 public interface ServiceInterface<T> {

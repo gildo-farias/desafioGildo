@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,41 +16,21 @@ import com.goat.desafioGildo.services.FilmesService;
 
 @RestController
 @RequestMapping("/filmes")
-public class FilmesController implements Controller<Filme> {
+public class FilmesController{
 	
 	@Autowired
 	private FilmesService filmesService;
 	
-	@GetMapping("")
-	@Override
+	@GetMapping("")	
 	public ResponseEntity<List<Filme>> listar() {
 		List<Filme> filmesRecentes = filmesService.BuscasRecentes();
 		return ResponseEntity.ok(filmesRecentes);
 	}
 	
-	@GetMapping("/{busca}")
-	@Override
-	public ResponseEntity<Filme> buscar(String busca) {
+	@GetMapping("/{busca}")		
+	public ResponseEntity<Filme> buscar(@PathVariable(name = "busca") String busca) {
 		Filme filme = this.filmesService.buscarFilme(busca);
 		return ResponseEntity.ok(filme);
-	}		
-
-	@Override
-	public ResponseEntity<Filme> salvar(Filme object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<Filme> alterar(Filme object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deletar(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
+	}			
 
 }

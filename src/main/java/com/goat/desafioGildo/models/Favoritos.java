@@ -13,6 +13,10 @@ public class Favoritos {
 	
 	private Long id_filme;
 	private String login_usuario;	
+	
+	public Favoritos() {
+		super();		
+	}
 
 	public Favoritos(Long id_filme, String login_usuario) {
 		super();

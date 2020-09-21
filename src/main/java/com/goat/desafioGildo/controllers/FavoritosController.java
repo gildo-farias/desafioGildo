@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import com.goat.desafioGildo.models.Favoritos;
 import com.goat.desafioGildo.models.Filme;
 import com.goat.desafioGildo.services.FavoritosService;
 import com.goat.desafioGildo.services.FilmesService;
-import com.goat.desafioGildo.services.UsuarioService;
 /** @author GILDO */
 
 @RestController
@@ -25,14 +23,12 @@ public class FavoritosController implements Controller<Filme>{
 	@Autowired	
 	private FavoritosService favoritosService;
 	@Autowired
-	private FilmesService filmesService;  
-	@Autowired
-	private UsuarioService usuarioService; 
-
-	@GetMapping("")
+	private FilmesService filmesService;
+	
+	@GetMapping("/{username}")
 	@Override
-	public ResponseEntity<List<Filme>> listar() {		
-		List<Favoritos> favoritosList = favoritosService.listar(usuarioService.getLogin());
+	public ResponseEntity<List<Filme>> listar(String username) {		
+		List<Favoritos> favoritosList = favoritosService.listar(username);
 		List<Filme> filmesList = new ArrayList<Filme>();
 		
 		for (Favoritos favorito : favoritosList) {
@@ -40,31 +36,26 @@ public class FavoritosController implements Controller<Filme>{
 		}
 		
 		return ResponseEntity.ok(filmesList);		
-	}
-
+	}	
+	
 	@Override
-	public ResponseEntity<Filme> buscar(String busca) {
+	public ResponseEntity<Filme> buscar(String busca, String username) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}	
 
-	@PostMapping("/star")
+	@PostMapping("/star/{username}")
 	@Override
-	public ResponseEntity<Filme> salvar(Filme object) {		
-//		favoritosService.salvar(object, usuarioService.getLogin());		
+	public ResponseEntity<Filme> salvar(Filme object, String username) {	
+		if(username != null) {
+			favoritosService.salvar(object.getId(), username);
+		}				
 		return ResponseEntity.ok(object);
 	}
 
 	@Override
-	public ResponseEntity<Filme> alterar(Filme object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@DeleteMapping("/unstar")
-	@Override
 	public void deletar(Long id) {
 		// TODO Auto-generated method stub		
-	}	
-
+	}
+	
 }
