@@ -44,7 +44,7 @@ public class FavoritosController implements Controller<Filme>{
 		return null;
 	}	
 
-	@PostMapping("/star/{username}")
+	@PostMapping("/{username}")
 	@Override
 	public ResponseEntity<Filme> salvar(Filme object, String username) {	
 		if(username != null) {
