@@ -1,5 +1,7 @@
 package com.goat.desafioGildo.security;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.goat.desafioGildo.models.Usuario;
 import com.goat.desafioGildo.repositorys.UsuarioRepository;
+/** @author GILDO */
 
 @Service
+@Transactional
 public class ImplementsUserDetailsService implements UserDetailsService {
 
 	@Autowired
@@ -21,6 +25,7 @@ public class ImplementsUserDetailsService implements UserDetailsService {
 		if(usuario == null) {
 			throw new UsernameNotFoundException("Usuario: " + login + " não encontrado!");
 		}		
+//		return new User(usuario.getUsername(), usuario.getLogin(), true, true, true, true,  usuario.getAuthorities());
 		return usuario;
 	}
 

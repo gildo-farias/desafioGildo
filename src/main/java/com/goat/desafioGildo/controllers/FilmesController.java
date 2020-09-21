@@ -20,19 +20,19 @@ public class FilmesController implements Controller<Filme> {
 	@Autowired
 	private FilmesService filmesService;
 	
-	@GetMapping("/{busca}")
-	@Override
-	public ResponseEntity<Filme> buscar(String busca) {
-		Filme filme = this.filmesService.buscarFilme(busca);
-		return ResponseEntity.ok(filme);
-	}
-
 	@GetMapping("")
 	@Override
 	public ResponseEntity<List<Filme>> listar() {
 		List<Filme> filmesRecentes = filmesService.BuscasRecentes();
 		return ResponseEntity.ok(filmesRecentes);
-	}	
+	}
+	
+	@GetMapping("/{busca}")
+	@Override
+	public ResponseEntity<Filme> buscar(String busca) {
+		Filme filme = this.filmesService.buscarFilme(busca);
+		return ResponseEntity.ok(filme);
+	}		
 
 	@Override
 	public ResponseEntity<Filme> salvar(Filme object) {

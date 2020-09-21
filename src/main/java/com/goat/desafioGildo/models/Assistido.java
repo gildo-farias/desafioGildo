@@ -13,6 +13,12 @@ public class Assistido {
 	
 	private Long id_filme;
 	private String login_usuario;
+		
+	public Assistido(Long id_filme, String login_usuario) {
+		super();
+		this.id_filme = id_filme;
+		this.login_usuario = login_usuario;
+	}
 	
 	public Long getId() {
 		return id;

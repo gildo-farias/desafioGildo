@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /** @author GILDO */
 
 public interface Controller<T> {
-	
+		
 	public ResponseEntity<List<T>> listar();
 	
 	public ResponseEntity<T> buscar(@PathVariable(name = "busca") String busca);
@@ -19,4 +19,5 @@ public interface Controller<T> {
 	public ResponseEntity<T> alterar(@RequestBody T object);	
 	
 	public void deletar(@PathVariable(name = "id") Long id);
+		
 }

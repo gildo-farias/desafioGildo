@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.goat.desafioGildo.models.Assistido;
-import com.goat.desafioGildo.models.Filme;
 import com.goat.desafioGildo.repositorys.AssistidoRepository;
 
 /** @author GILDO */
@@ -22,17 +21,13 @@ public class AssistidosService implements ServiceInterface<Assistido> {
 	}
 
 	@Override
-	public Assistido buscar(String busca) {
-		// TODO Auto-generated method stub
-		return null;
+	public Assistido buscar(Long id) {
+		return assistidoRepository.findById(id).get();
 	}
 
 	@Override
-	public Assistido salvar(Filme filme, String login_usuario) {
-		Assistido assistido = new Assistido();
-		assistido.setId_filme(filme.getId());
-		assistido.setLogin_usuario(login_usuario);
-		
+	public Assistido salvar(Long id_filme, String login_usuario) {
+		Assistido assistido = new Assistido(id_filme, login_usuario);		
 		return assistidoRepository.save(assistido);	
 	}
 
@@ -44,8 +39,7 @@ public class AssistidosService implements ServiceInterface<Assistido> {
 
 	@Override
 	public void deletar(Long id) {
-		// TODO Auto-generated method stub
-		
+		assistidoRepository.deleteById(id);		
 	}
 	
 	

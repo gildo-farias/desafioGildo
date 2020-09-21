@@ -43,12 +43,15 @@ public class FilmesService {
 		
 		if(filme.getId() == null) {
 			filme = externaAPI(busca);
-			if(filme.getSinopse().length()>0) {
-				filmeRepository.save(filme);
-			}
-		}		
+			if(filme.getTitulo() != null)
+				filmeRepository.save(filme);			
+		}
 		
-		return filme;		
+		return filme;
+	}
+	
+	public Filme findFilmeById(Long id) {
+		return filmeRepository.findById(id).get();
 	}
 	
 	public List<Filme> BuscasRecentes() {
