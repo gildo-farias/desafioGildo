@@ -22,7 +22,8 @@ public class AssistidosService implements ServiceInterface<Assistido> {
 
 	@Override
 	public Assistido buscar(Long id) {
-		return assistidoRepository.findById(id).get();
+		// TODO Auto-generated method stub
+		return null;		
 	}
 
 	@Override
@@ -32,16 +33,16 @@ public class AssistidosService implements ServiceInterface<Assistido> {
 	}
 
 	@Override
-	public Assistido alterar(Assistido object) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deletar(Long id_filme, String login_usuario) {	
+		List<Assistido> assistidosList = assistidoRepository.findAllAssistidosByUsuario(id_filme, login_usuario);		
+		if(assistidosList.size()>0) {
+			assistidoRepository.deleteAll(assistidosList);
+			return true;			
+		}else {
+			return false;			
+		}				
+		
 	}
-
-	@Override
-	public void deletar(Long id) {
-		assistidoRepository.deleteById(id);		
-	}
-	
 	
 
 }

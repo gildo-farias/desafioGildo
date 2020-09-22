@@ -13,7 +13,7 @@ public class Role implements GrantedAuthority {
 	
 	@Id
 	private String nomeRole;
-	
+		
 	@ManyToMany(mappedBy = "roles")
 	private List<Usuario> usuarios;
 

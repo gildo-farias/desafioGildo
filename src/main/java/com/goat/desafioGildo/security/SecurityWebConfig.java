@@ -23,16 +23,10 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/").permitAll()
-		.antMatchers(HttpMethod.POST, "/").permitAll();
+	protected void configure(HttpSecurity http) throws Exception {		
+		http.cors().and().csrf().disable();
 	}	
 	
-	// CORS
-//	public void addCorsMappings(CorsRegistry registry) {
-//		registry.addMapping("/**").allowedMethods("*");
-//	}
 	
 	
 }

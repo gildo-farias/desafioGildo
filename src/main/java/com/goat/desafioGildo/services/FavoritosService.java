@@ -22,7 +22,8 @@ public class FavoritosService implements ServiceInterface<Favoritos>{
 
 	@Override
 	public Favoritos buscar(Long id) {
-		return favoritosRepository.findById(id).get();		
+		// TODO Auto-generated method stub
+		return null;		
 	}
 
 	@Override
@@ -32,15 +33,19 @@ public class FavoritosService implements ServiceInterface<Favoritos>{
 	}
 
 	@Override
-	public Favoritos alterar(Favoritos object) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deletar(Long id_filme, String login_usuario) {	
+		List<Favoritos> favoritosList = favoritosRepository.findAllFavoritosByUsuario(id_filme, login_usuario);		
+		if(favoritosList.size()>0) {
+			favoritosRepository.deleteAll(favoritosList);
+			return true;			
+		}else {
+			return false;			
+		}				
+		
 	}
 
-	@Override
-	public void deletar(Long id) {
-		favoritosRepository.deleteById(id);		
-	}
+	
 
+	
 
 }

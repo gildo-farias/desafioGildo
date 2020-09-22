@@ -16,6 +16,6 @@ public interface Controller<T> {
 	
 	public ResponseEntity<T> salvar(@RequestBody T object, @PathVariable(name = "username") String username);
 	
-	public void deletar(@PathVariable(name = "id") Long id);
+	public ResponseEntity<T> deletar(@PathVariable(name = "username") String username, @PathVariable(name = "id_filme") Long id_filme);
 		
 }

@@ -22,8 +22,10 @@ public class Usuario implements UserDetails {
 	private String senha;
 
 	@ManyToMany	
-	@JoinTable(name="usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "login" ),
-	inverseJoinColumns = @JoinColumn (name = "role_id", referencedColumnName = "nomeRole"))
+	@JoinTable(name="usuarios_roles", joinColumns = @JoinColumn(
+			name = "usuario_id", referencedColumnName = "login" ),
+			inverseJoinColumns = @JoinColumn(
+			name = "role_id", referencedColumnName = "nomeRole"))
 	private List<Role> roles;	
 	
 	public String getLogin() {
@@ -53,7 +55,7 @@ public class Usuario implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.roles;		
+		return (Collection<? extends GrantedAuthority>)this.roles;		
 	}
 	
 	@Override
