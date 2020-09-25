@@ -5,6 +5,7 @@
  Usei a API do site americano: [OMDb API](http://www.omdbapi.com/)
  - **ATENÇÃO** As buscas devem ser feitas com o titulo do filme em **_inglês_** pois a api usa uma base de dados americana.
  - apikey = **_fa032f7f_**
+ - Basta usar a GET Request: ' http: //localhost:8080/filmes/Titulo Do Filme Em Ingles ' e o filme sera cadastrado na base de dados se encontrado.
  
 # Base de Dados PostgreSQL
  - Porta = 5432
@@ -14,8 +15,8 @@
  
  # Começando...
   - Crie um usuario:
-    - POST LINK: 
-     'http://localhost:8080/usuarios/novo'
+    - POST Request: 
+     ' http://localhost:8080/usuarios/novo '
     - Request Body:
  ```
 {
