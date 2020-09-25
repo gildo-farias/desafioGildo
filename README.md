@@ -12,10 +12,15 @@
  - Username = gil
  - Password = 123
  
- > Usuario sendo validado na base de dados com Spring Security. 
-  ```
-  INSERT INTO usuario(login, nome_completo, senha) VALUES ('gil@15','Gildo Farias','$2a$10$h/AryOozC6DSEkMvGtEO..ULp2S8TpgT.J7Yrq7A9Gh9WHPrsPBgG')
-  ``` 
- - Spring Security Acesso:
-   - Username = **gil@15**
-   - Password = **123**
+ # Começando...
+ - Crie um usuario:
+  - POST LINK: 
+       > http://localhost:8080/usuarios/novo
+  - Request Body:
+ ```
+{
+ "login":"user@15",
+ "nomeCompleto":"Fulano de Tal",
+ "senha":"123"
+}
+ ```
