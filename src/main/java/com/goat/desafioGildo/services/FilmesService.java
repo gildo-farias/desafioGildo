@@ -36,7 +36,7 @@ public class FilmesService {
 	
 	public Filme buscarFilme(String busca) {
 		Filme filme = new Filme();		
-		for (Filme f : BuscasRecentes()) {
+		for (Filme f : listarFilmes()) {
 			if(f.getTitulo().toLowerCase().contains(busca.toLowerCase()))
 			filme = f;			
 		}
@@ -54,7 +54,7 @@ public class FilmesService {
 		return filmeRepository.findById(id).get();
 	}
 	
-	public List<Filme> BuscasRecentes() {
+	public List<Filme> listarFilmes() {
 		return filmeRepository.findAll();
 	}
 

@@ -18,13 +18,13 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder builder) throws Exception {		
-		builder.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-		
+		builder.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());		
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {		
-		http.cors().and().csrf().disable();
+		http.cors().and().csrf().disable();		
+		http.authorizeRequests().antMatchers("/").authenticated().anyRequest().permitAll().and().formLogin();		
 	}	
 	
 	
