@@ -13,10 +13,10 @@
  - Password = 123
  
  # Começando...
- - Crie um usuario:
-  - POST LINK: 
-       > http://localhost:8080/usuarios/novo
-  - Request Body:
+  - Crie um usuario:
+    - POST LINK: 
+     'http://localhost:8080/usuarios/novo'
+    - Request Body:
  ```
 {
  "login":"user@15",
