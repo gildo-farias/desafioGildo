@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 /** @author GILDO */
 
@@ -34,5 +36,17 @@ public class UsuarioService {
 		}		
 		
 	}
+		
+	public Usuario salvar(Usuario usuario) {			
+		if(findUser(usuario.getLogin()) == null) {
+			PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			usuario.setSenha(encoder.encode(usuario.getSenha()));
+			return usuarioRepository.save(usuario);
+		}									
+		else 
+			return null;		
+			
+	}
+	
 	
 }
