@@ -17,11 +17,11 @@
    - Crie um usuario:
      - POST Request: 
       `http://localhost:8080/usuarios/novo`
-     - Request Body:
-    ```
-   {
-    "login":"user@15",
-    "nomeCompleto":"Fulano de Tal",
-    "senha":"123"
-   }
-    ```
+     - Request Body:     
+```
+ {
+  "login":"user@15",
+  "nomeCompleto":"Fulano de Tal",
+  "senha":"123"
+ }
+```
